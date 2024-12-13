@@ -1,0 +1,30 @@
+/* Global Styles */
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background: #0d1117;
+  color: #c9d1d9;
+  overflow-x: hidden;
+}
+
+h1, h3 {
+  color: #58a6ff;
+  text-shadow: 0px 0px 8px #58a6ff;
+}
+
+a {
+  color: #58a6ff;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+  color: #d1aaff;
+}
+
+/* Utility Classes */
+.neon-border {
+  border: 2px solid #58a6ff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px #58a6ff, 0px 0px 30px #58a6ff;
+}
