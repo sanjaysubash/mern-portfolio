@@ -15,7 +15,7 @@ const Projects = () => {
       description: 'An innovative product that tracks movement for advertising purposes.',
       techStack: ['JavaScript', 'HTML', 'CSS'],
       image: 'https://via.placeholder.com/400x300',
-      link: 'https://example.com/project2',
+      link: 'https://splitter-8fih.onrender.com',
     },
     // Add more projects here
   ];
