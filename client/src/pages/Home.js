@@ -47,7 +47,7 @@ const Home = () => {
       </p>
 
       <div>
-        <a href="#projects">
+        <a href="client/src/pages/Projects.js">
           <button style={buttonStyle}>View Projects</button>
         </a>
         <a href="/resume.pdf" download>
