@@ -1,24 +1,48 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ProjectCard from '../components/ProjectCard';
 
 const Projects = () => {
-  const projects = [
-    {
-      title: 'Sports Information Website (ADRIN)',
-      description: 'A website built with the MERN stack to provide sports data.',
-      techStack: ['React', 'Node.js', 'MongoDB'],
-      image: 'https://via.placeholder.com/400x300',
-      link: 'https://example.com/project1',
-    },
-    {
-      title: 'T-shirt Advertising Product (T-SWEAT)',
-      description: 'An innovative product that tracks movement for advertising purposes.',
-      techStack: ['JavaScript', 'HTML', 'CSS'],
-      image: 'https://via.placeholder.com/400x300',
-      link: 'https://splitter-8fih.onrender.com',
-    },
-    // Add more projects here
-  ];
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const response = await fetch('https://api.github.com/users/sanjaysubash/repos');
+        if (!response.ok) {
+          throw new Error('Failed to fetch projects');
+        }
+        const data = await response.json();
+
+        // Map the GitHub data to the structure you want for your projects
+        const formattedProjects = data.map((repo) => ({
+          title: repo.name,
+          description: repo.description,
+          techStack: repo.language ? [repo.language] : ['JavaScript'],
+          image: `https://via.placeholder.com/400x300`, // Replace with actual images if necessary
+          link: repo.html_url,
+        }));
+
+        setProjects(formattedProjects);
+      } catch (error) {
+        setError('Error fetching projects');
+        console.error('Error fetching projects:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProjects();
+  }, []);
+
+  if (loading) {
+    return <p>Loading projects...</p>;
+  }
+
+  if (error) {
+    return <p>{error}</p>;
+  }
 
   return (
     <section style={{ padding: '3rem 1rem', backgroundColor: '#161b22', color: '#fff' }}>

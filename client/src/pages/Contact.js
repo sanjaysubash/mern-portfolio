@@ -1,106 +1,117 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 
-const ContactForm = () => {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-  const [isSending, setIsSending] = useState(false);
-  const [responseMessage, setResponseMessage] = useState('');
-  const [messageType, setMessageType] = useState(''); // success or error
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSending(true);
-    try {
-      await axios.post('/api/contact', formData);
-      setResponseMessage('Message sent successfully!');
-      setMessageType('success');
-      setFormData({ name: '', email: '', message: '' });
-    } catch (error) {
-      setResponseMessage('Failed to send the message. Please try again later.');
-      setMessageType('error');
-    }
-    setIsSending(false);
-  };
+const ProfileLinks = () => {
+  const profiles = [
+    { 
+      name: 'GitHub', 
+      url: 'https://github.com/sanjaysubash', 
+      logo: 'https://user-images.githubusercontent.com/74038190/212257468-1e9a91f1-b626-4baa-b15d-5c385dfa7ed2.gif' 
+    },
+    { 
+      name: 'Codolio', 
+      url: 'https://codolio.com/profile/funguy', 
+      logo: 'https://codolio.com/codolio_assets/gif-owl-transparent.GIF' 
+    },
+    { 
+      name: 'LinkedIn', 
+      url: 'https://www.linkedin.com/in/sanjaysubash/', 
+      logo: 'https://i.pinimg.com/originals/de/b4/6f/deb46f02a59e3b3a2aa58fac16290d63.gif' 
+    },
+    { 
+      name: 'Instagram', 
+      url: 'https://instagram.com/mr._funguy', 
+      logo: 'https://media2.giphy.com/media/3o7bu7wtT19WfBAt0Y/200w.gif?cid=6c09b9529gnfq8y23jj16dcmedl6z2ejsr5squx9sxy04ri0&ep=v1_gifs_search&rid=200w.gif&ct=g' 
+    },
+    
+  ];
 
   return (
-    <section style={{ padding: '3rem 1rem', backgroundColor: '#161b22', color: '#fff' }}>
-      <h1>Contact Me</h1>
-      <form onSubmit={handleSubmit} style={{ maxWidth: '600px', margin: '0 auto' }}>
-        <input
-          type="text"
-          placeholder="Your Name"
-          value={formData.name}
-          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          required
-          style={inputStyle}
-        />
-        <input
-          type="email"
-          placeholder="Your Email"
-          value={formData.email}
-          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-          required
-          style={inputStyle}
-        />
-        <textarea
-          placeholder="Your Message"
-          value={formData.message}
-          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-          required
-          rows="5"
-          style={inputStyle}
-        />
-        <button
-          type="submit"
-          disabled={isSending}
-          style={buttonStyle(isSending)}
-        >
-          {isSending ? 'Sending...' : 'Send Message'}
-        </button>
-      </form>
-
-      {responseMessage && (
-        <p
-          style={{
-            textAlign: 'center',
-            marginTop: '1rem',
-            color: messageType === 'success' ? '#28a745' : '#dc3545',
-            fontWeight: 'bold',
-          }}
-        >
-          {responseMessage}
-        </p>
-      )}
+    <section style={sectionStyle}>
+      <h1 style={headingStyle}>Connect with Me</h1>
+      <div style={gridStyle}>
+        {profiles.map((profile, index) => (
+          <a
+            key={index}
+            href={profile.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={linkStyle}
+          >
+            <img src={profile.logo} alt={`${profile.name} logo`} style={logoStyle} />
+            <span style={nameStyle}>{profile.name}</span>
+          </a>
+        ))}
+      </div>
     </section>
   );
 };
 
-// Inline styles for the form elements
-const inputStyle = {
-  width: '100%',
-  padding: '1rem',
-  margin: '0.5rem 0',
-  borderRadius: '5px',
-  border: '1px solid #ccc',
-  fontSize: '1rem',
-  backgroundColor: '#1c1f26',
+const sectionStyle = {
+  padding: '4rem 2rem',
+  background: 'linear-gradient(45deg, #0b0c10, #1f2833)',
   color: '#fff',
-  outline: 'none',
-  transition: 'border 0.3s ease, box-shadow 0.3s ease',
+  textAlign: 'center',
+  minHeight: '100vh',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  boxSizing: 'border-box',
 };
 
-const buttonStyle = (isSending) => ({
-  width: '100%',
-  padding: '1rem',
-  backgroundColor: '#58a6ff',
-  border: 'none',
-  color: '#fff',
-  borderRadius: '5px',
+const headingStyle = {
+  fontSize: '3.5rem',
+  marginBottom: '2.5rem',
+  color: '#66fcf1',
   fontWeight: 'bold',
-  fontSize: '1.1rem',
-  cursor: isSending ? 'not-allowed' : 'pointer',
-  transition: 'background 0.3s ease, transform 0.2s ease',
-  opacity: isSending ? 0.6 : 1,
-});
+  letterSpacing: '2px',
+  textTransform: 'uppercase',
+  textShadow: '4px 4px 12px rgba(102, 252, 241, 0.8)',
+};
 
-export default ContactForm;
+const gridStyle = {
+  display: 'grid',
+  gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', 
+  gap: '2rem',
+  width: '100%',
+  maxWidth: '1200px',
+  padding: '0 1rem',
+};
+
+const linkStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  textDecoration: 'none',
+  color: '#66fcf1',
+  fontSize: '1.4rem',
+  fontWeight: '600',
+  padding: '2rem',
+  border: '2px solid #66fcf1',
+  borderRadius: '12px',
+  transition: 'transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease',
+  textAlign: 'center',
+  boxShadow: '0 4px 16px rgba(0, 0, 0, 0.6)',
+  position: 'relative',
+  overflow: 'hidden',
+  background: 'linear-gradient(135deg, #1f2833 0%, #0b0c10 100%)',
+  cursor: 'pointer',
+};
+
+const logoStyle = {
+  width: '60px',
+  height: '60px',
+  marginBottom: '1.2rem',
+  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+};
+
+const nameStyle = {
+  fontSize: '1.4rem',
+  fontWeight: '600',
+  color: '#ffffff',
+  marginTop: '1rem',
+  transition: 'color 0.3s ease',
+};
+
+export default ProfileLinks;
