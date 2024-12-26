@@ -125,7 +125,7 @@ const Home = () => {
       {/* Action Buttons */}
       <div style={{ marginTop: '3rem' }}>
         <motion.a
-          href="./Projects"
+          href="./projects"
           whileHover={{ scale: 1.1 }}
           style={{ textDecoration: 'none' }}
         >
