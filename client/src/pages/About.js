@@ -12,16 +12,15 @@ const About = () => {
           />
         </div>
         <div style={styles.bioContainer}>
-          <h1 style={styles.heading}>About Me</h1>
+          <h1 style={styles.heading}>👋 About Me</h1>
           <div style={styles.content}>
             <p style={styles.paragraph}>
-              I am a software developer based in Coimbatore, Tamil Nadu. I hold a B.Tech in Computer Science and Business Systems from KIT.
-              I have experience in developing websites and applications using various technologies such as React, JavaScript, Python, Java, and more.
+              I’m a passionate software developer from Coimbatore, Tamil Nadu 🇮🇳 with a B.Tech in Computer Science and Business Systems from KIT. I build modern websites and applications using technologies like React, Node.js, Python, Java, and more.
             </p>
             <p style={styles.paragraph}>
-              In my free time, I enjoy exploring new technologies, contributing to open-source, and solving problems.
+              I'm enthusiastic about solving real-world problems, contributing to open-source, and exploring new tech trends. When I’m not coding, you’ll find me immersed in design, hardware setups, or editing videos.
             </p>
-            <h3 style={styles.subHeading}>Skills</h3>
+            <h3 style={styles.subHeading}>💼 My Skills</h3>
             <div style={styles.skillsFrame}>
               {skills.map((skill, index) => (
                 <div key={index} style={styles.skillItem}>
@@ -43,30 +42,35 @@ const skills = [
   { icon: '🐍', text: 'Python - Intermediate' },
   { icon: '☕', text: 'Java - Intermediate' },
   { icon: '🌐', text: 'Node.js - Advanced' },
-  { icon: '💾', text: 'SQL & NoSQL Databases - Proficient' },
-  { icon: '🔗', text: 'Version Control (Git, GitHub) - Advanced' },
-  { icon: '🎨', text: 'Graphics Design - Intermediate' },
-  { icon: '💡', text: 'UI/UX Design - Proficient' },
+  { icon: '💾', text: 'SQL & NoSQL - Proficient' },
+  { icon: '🔗', text: 'Git & GitHub - Advanced' },
+  { icon: '🎨', text: 'Graphic Design - Intermediate' },
+  { icon: '💡', text: 'UI/UX - Proficient' },
   { icon: '🖥️', text: 'Computer Hardware - Advanced' },
 ];
 
 const styles = {
   aboutSection: {
-    padding: '6rem 2rem',
-    backgroundColor: '#1c1f26',
+    padding: '5rem 2rem',
+    background: 'linear-gradient(to right, #0f2027, #203a43, #2c5364)',
     color: '#fff',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     minHeight: '100vh',
+    fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
   },
   aboutContainer: {
     display: 'grid',
     gridTemplateColumns: '1fr 2fr',
     gap: '3rem',
-    maxWidth: '1200px',
     width: '100%',
-    margin: '0 auto',
+    maxWidth: '1200px',
+    background: 'rgba(255, 255, 255, 0.05)',
+    borderRadius: '20px',
+    backdropFilter: 'blur(10px)',
+    boxShadow: '0 8px 30px rgba(0, 0, 0, 0.5)',
+    padding: '3rem',
   },
   imageContainer: {
     display: 'flex',
@@ -74,13 +78,13 @@ const styles = {
     alignItems: 'center',
   },
   avatar: {
+    width: '260px',
+    height: '260px',
     borderRadius: '50%',
-    width: '250px',
-    height: '250px',
     objectFit: 'cover',
-    border: '6px solid #58a6ff',
-    boxShadow: '0 4px 10px rgba(0, 0, 0, 0.3)',
-    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+    border: '5px solid rgba(88, 166, 255, 0.6)',
+    boxShadow: '0 4px 25px rgba(88, 166, 255, 0.6)',
+    transition: 'transform 0.4s ease',
     cursor: 'pointer',
   },
   bioContainer: {
@@ -89,54 +93,60 @@ const styles = {
     justifyContent: 'center',
   },
   heading: {
-    fontSize: '3rem',
+    fontSize: '3.5rem',
     color: '#58a6ff',
     marginBottom: '1.5rem',
-    fontWeight: '700',
+    fontWeight: '800',
     textTransform: 'uppercase',
-    letterSpacing: '2px',
+    letterSpacing: '1px',
   },
   content: {
     marginBottom: '2rem',
   },
   paragraph: {
     fontSize: '1.25rem',
-    lineHeight: '1.8',
-    marginBottom: '1.5rem',
-    color: '#b0b3b8',
+    lineHeight: '1.9',
+    marginBottom: '1.25rem',
+    color: '#d1d9e6',
   },
   subHeading: {
     fontSize: '2rem',
-    color: '#58a6ff',
-    marginBottom: '1rem',
-    fontWeight: '500',
+    color: '#fff',
+    marginBottom: '1.2rem',
+    fontWeight: '600',
+    borderBottom: '2px solid #58a6ff',
+    paddingBottom: '0.5rem',
+    width: 'fit-content',
   },
   skillsFrame: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-    gap: '1.5rem',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+    gap: '1.25rem',
+    background: 'rgba(255, 255, 255, 0.03)',
+    borderRadius: '12px',
     padding: '1.5rem',
-    border: '2px solid #58a6ff',
-    borderRadius: '8px',
-    backgroundColor: '#1e222a',
+    border: '1px solid rgba(255, 255, 255, 0.1)',
   },
   skillItem: {
     display: 'flex',
     alignItems: 'center',
-    gap: '1rem',
+    gap: '0.75rem',
     padding: '1rem',
-    borderRadius: '6px',
-    backgroundColor: '#2c313a',
-    boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)',
-    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-    cursor: 'pointer',
+    backgroundColor: 'rgba(255, 255, 255, 0.06)',
+    borderRadius: '10px',
+    transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.3)',
+  },
+  skillItemHover: {
+    transform: 'scale(1.03)',
+    boxShadow: '0 4px 12px rgba(88, 166, 255, 0.4)',
   },
   skillIcon: {
     fontSize: '2rem',
   },
   skillText: {
-    fontSize: '1.15rem',
-    color: '#b0b3b8',
+    fontSize: '1.1rem',
+    color: '#e1e5ee',
   },
 };
 
